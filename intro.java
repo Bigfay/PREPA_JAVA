@@ -4,6 +4,10 @@ public class intro {
     private byte b;
     private int[] p = { 3, 4, 5 };
     private int pint;
+    private String mot1 = "coucou";
+    private String mot3 = new String("coucou");
+    private String mot2 = mot3;
+
 
     public intro() {
         this.a = 3;
@@ -24,4 +28,17 @@ public class intro {
         return b;
     }
 
+    public int getSeven() {
+        return this.a;
+    }
+    public boolean comp1() {
+        boolean result;
+        result = this.mot1 == this.mot2;
+        return result ;
+    }
+    public boolean comp2() {
+        boolean result2;
+        result2 = this.mot1.equals(this.mot2);
+        return result2 ;
+    }
 }
