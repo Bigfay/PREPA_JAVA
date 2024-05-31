@@ -19,8 +19,10 @@ public class lemain {
     ma_liste_distante.mon_index();
     String me = ma_liste_distante.mon_index();
     System.out.println(me);
+    System.out.println();
+    ma_liste_distante.mon_index(1);
     me = me + "klm";
     ma_liste_distante.mon_index_set(me);
-    System.out.println(ma_liste_distante.mon_index());
+    System.out.println(ma_liste_distante.mon_index(1));
   }
 }

@@ -13,6 +13,10 @@ public class my_list {
         return ma_liste.get(0);
     }
 
+    public String mon_index(int i) {
+        return ma_liste.get(i);
+    }
+
     public void mon_index_set(String z) {
         ma_liste.set(0, z);
     }
