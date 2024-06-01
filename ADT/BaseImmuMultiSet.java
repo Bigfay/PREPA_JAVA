@@ -65,7 +65,7 @@ public class BaseImmuMultiSet implements ImmuMultiSet {
 
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder("{}");
+        StringBuilder s = new StringBuilder("{");
         if (this.size() == 0) {
             return "{}";
         }
