@@ -10,8 +10,8 @@ public class test_stack {
         System.out.println("t " + t.hashCode());
         StringBuilder sb = new StringBuilder("he");
         StringBuilder tb = sb;
-        String s1 = "hello";
-        String t1 = "hello";
+        // String s1 = "hello";
+        // String t1 = "hello";
 
         sb.append("llo");
         tb.append(" goodbye");
