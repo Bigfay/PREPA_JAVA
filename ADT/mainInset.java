@@ -6,6 +6,7 @@ public class mainInset {
         IntSet t = new IntSet();
         s.insert(3);
         t.insert(3);
+        System.out.println(s.repOK());
         System.out.println("coucou");
         System.out.println(s.equals(t)); // False car mutable et différent référencement
         System.out.println(s.toString());

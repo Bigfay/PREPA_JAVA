@@ -184,7 +184,7 @@ public class Poly {
         return r;
     }
 
-    @overload
+    //@overload
     public boolean equals(Poly q) { // On réimplémente equals car Poly est immutable afin de comparer les valeurs de
                                     // ces 2 instances
         if (q == null || deg != q.deg) // on compare les degrés des 2 polynomes s'ils sont différents on sait déjà que
