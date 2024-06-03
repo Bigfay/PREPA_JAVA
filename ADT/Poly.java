@@ -1,5 +1,7 @@
 package ADT;
 
+import java.util.Arrays;
+
 //import ADT.NegativeExponentException;
 
 /**
@@ -9,6 +11,18 @@ package ADT;
  *           ... + cn x^n
  *           où chaque ci est un int (pour 0 <= i <= n)
  */
+
+// La fonction d’abstraction est
+// FA(c) = c0 + c1x + c2x^2 + ...
+// où
+// ci = c.trms[i] si 0 <= i < c.trms.length
+// = 0 sinon
+
+// IR(c) :
+// c.trms ≠ null &&
+// c.trms.length >= 1 &&
+// c.deg = c.trms.length-1 &&
+// c.deg > 0 Þ c.trms[deg] ≠ 0
 
 public class Poly {
 
@@ -170,10 +184,14 @@ public class Poly {
         return r;
     }
 
-    public boolean equals(Poly q) { // On réimplémente equals car Poly est immutable
-        if (q == null || deg != q.deg)
+    @overload
+    public boolean equals(Poly q) { // On réimplémente equals car Poly est immutable afin de comparer les valeurs de
+                                    // ces 2 instances
+        if (q == null || deg != q.deg) // on compare les degrés des 2 polynomes s'ils sont différents on sait déjà que
+                                       // ce ne sont pas les mêmes polynomes
             return false;
-        for (int i = 0; i <= deg; i++) {
+        for (int i = 0; i <= deg; i++) { // Pour finir on compare les coeficients des polynômes si c les mêmes alors
+                                         // true sinon false
             if (trms[i] != q.trms[i])
                 return false;
         }
@@ -181,6 +199,11 @@ public class Poly {
     }
 
     @Override
+    /*
+     * on compare la classe au runtime de l'object o si'il s'avère qu'il est de la
+     * classe Poly on fait appelle au Poly du dessus. Au passage on cast le type
+     * pour être sûr que le Poly du dessus le prenne en charge
+     */
     public boolean equals(Object o) {
         if (o == null || !o.getClass().equals(getClass())) {
             return false;
@@ -188,4 +211,24 @@ public class Poly {
         return equals((Poly) o);
     }
 
+    @Override
+    public int hashCode() {
+        // 2 variables à considérer ici deg et le tableau trms
+        int result = 17;
+        result = 31 * result + deg;
+        result = 31 * result + Arrays.hashCode(trms);
+        return result;
+    }
+
+    public boolean repOK() {
+        if (trms == null)
+            return false;
+        if (trms.length == 0)
+            return false;
+        if (deg != trms.length - 1)
+            return false;
+        if (deg == 0)
+            return true;
+        return (trms[deg] != 0);
+    }
 }

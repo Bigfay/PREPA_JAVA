@@ -12,9 +12,12 @@ import java.util.List;
  * @invariant size >= 0
  */
 
-/* 
- * 
- */
+// FA(c) = {c.els.get(i) | 0 <= i < c.els.size()}
+
+// L’invariant de rep est :
+// c.els ≠ null &&
+// il n’y a pas de doublons dans c.els
+
 public class IntSet {
     // La représentation
     private List<Integer> els;
@@ -35,7 +38,7 @@ public class IntSet {
 
     public void insert(int x) {
         /*
-         * index0f fournit -1 comme réponse cela veut dire que l'élément de fait pas
+         * indexOf fournit -1 comme réponse cela veut dire que l'élément de fait pas
          * partie de la liste c'est pour cela que l'on test < 0
          * c'est comme cela que pour le add on respecte l'unicité des éléments
          */
@@ -77,6 +80,42 @@ public class IntSet {
             throw new EmptyException("IntSet.choose()");
         }
         return els.get(0);
+    }
+
+    /**
+     * @effects crée une copie de c
+     */
+    public IntSet(IntSet c) { // Il s'agit d'une deep copy parce que InSet est MUTABLE un shallow copy aurait
+                              // provoquer un partage de référence
+        els = new ArrayList<>();
+        for (Integer i : c.els) {
+            els.add(i);
+        }
+    }
+
+    public String toString() {
+        if (els.size() == 0) {
+            return "IntSet:{}";
+        }
+        StringBuilder s = new StringBuilder("IntSet: {" +
+                els.get(0));
+        for (int i = 1; i < els.size(); i++) {
+            s = s.append(" , " + els.get(i));
+        }
+        return s.append("}").toString();
+    }
+
+    public boolean repOK() {
+        if (els == null)
+            return false;
+        for (int i = 0; i < els.size(); i++) {
+            Integer x = els.get(i);
+            for (int j = i + 1; j < els.size(); j++) {
+                if (x.equals(els.get(j)))
+                    return false;
+            }
+        }
+        return true;
     }
 
 }

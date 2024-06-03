@@ -5,6 +5,8 @@ public class mainPoly {
         Poly p = new Poly(3, 4);
         Poly q = new Poly(3, 4);
         System.out.println("coucou");
-        System.out.println(p.equals(q)); // FALSE car mutable et différent référencement
+        System.out.println(p.equals(q)); // True car immutable et equals redéfini
+        System.out.println(p.hashCode()); // True car la hashcode a été redéfini
+        System.out.println(q.hashCode());
     }
 }
